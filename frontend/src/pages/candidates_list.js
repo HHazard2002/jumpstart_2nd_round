@@ -87,9 +87,9 @@ function CandidatesList() {
   });
 
   const sendEmail = (formData) => {
-    const serviceID = "YOUR_SERVICE_ID";
-    const templateID = "YOUR_TEMPLATE_ID";
-    const userID = "YOUR_USER_ID";
+    const serviceID = "service_il03da8";
+    const templateID = "template_n24oymp";
+    const userID = "12i-YJ-wSzu1tPQM9";
 
     const templateParams = {
       name: formData.name,
@@ -98,6 +98,7 @@ function CandidatesList() {
       linkedin: formData.linkedin,
       jobDescription: formData.jobDescription,
       additionalInfo: formData.additionalInfo,
+      reply_to: formData.email,
     };
 
     emailjs.send(serviceID, templateID, templateParams, userID).then(
