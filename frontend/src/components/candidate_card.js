@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import image from "../images/imagess_3.jpeg";
-import image1 from "../images/image1.jpg";
+import React from "react";
 
-function CandidateCard({ candidate }) {
+function CandidateCard({ candidate, isInList, onToggleCandidate }) {
   return (
-    <div className="max-w-m mx-auto mt-5 pt-4 pr-4 pl-4 bg-white rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden flex flex-col h-full">
+    <div className="max-w-m mx-auto mt-5 pt-4 pr-4 pl-4 bg-white rounded-lg  dark:bg-gray-800 dark:border-gray-700 overflow-hidden flex flex-col h-full hover:drop-shadow-lg transition duration-400">
       <a href="#">
         <img
           className="w-full h-64 object-cover rounded-lg"
@@ -14,13 +12,13 @@ function CandidateCard({ candidate }) {
       </a>
       <div className="pt-2 flex flex-col flex-grow">
         <a href="#">
-          <div className="flex items-center">
+          <div className="flex items-cente justify-between">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {candidate.name}
             </h5>
-            <span className="inline-flex ml-2 items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-sm md:text-md font-medium text-red-700">
+            <h5 className="text-md font- tracking-tight text-gray-900 dark:text-white">
               {candidate.salary}
-            </span>
+            </h5>
           </div>
         </a>
         <div className="mt-2">
@@ -44,14 +42,24 @@ function CandidateCard({ candidate }) {
           {candidate.description}
         </p>
         <div className="mt-auto">
-          <button
-            className="px-6 py-2 mb-4 bg-black text-black rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
-            style={{
-              backgroundColor: "rgb(0, 242, 194)",
-            }}
-          >
-            Select for an interview
-          </button>
+          {isInList ? (
+            <button
+              onClick={() => onToggleCandidate(candidate)}
+              className="px-6 py-2 mb-4 bg-red-500 text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
+            >
+              Remove from the list
+            </button>
+          ) : (
+            <button
+              onClick={() => onToggleCandidate(candidate)}
+              className="px-6 py-2 mb-4 bg-black text-black rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
+              style={{
+                backgroundColor: "rgb(0, 242, 194)",
+              }}
+            >
+              Select for an interview
+            </button>
+          )}
         </div>
       </div>
     </div>
