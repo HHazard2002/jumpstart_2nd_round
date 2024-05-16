@@ -21,6 +21,7 @@ function CandidatesList() {
       ],
       description:
         "Recipient of the A.H Halsey Prize for outstanding performance in the Sociology Master's degree program.",
+      email: "hhazard2002@gmail.com",
     },
     {
       id: 2,
@@ -31,6 +32,7 @@ function CandidatesList() {
       education: ["BA in Economics (1st Class) @ Cambridge University (2021)"],
       description:
         "Developed and implemented an effective online pricing strategy for the apparel brand 'Threadbare', resulting in the brand's website transitioning from a loss-making venture to a profitable one.",
+      email: "hhazard2002@gmail.com",
     },
     {
       id: 3,
@@ -41,6 +43,7 @@ function CandidatesList() {
       education: ["BA in Music (1st Class) @ Oxford University"],
       description:
         "Walking 57km from Eastbourne to Brighton for Harry's HAT charity last year!",
+      email: "hhazard2002@gmail.com",
     },
     {
       id: 4,
@@ -54,6 +57,7 @@ function CandidatesList() {
       ],
       description:
         "Recipient of the A.H Halsey Prize for outstanding performance in the Sociology Master's degree program.",
+      email: "hhazard2002@gmail.com",
     },
     {
       id: 5,
@@ -64,6 +68,7 @@ function CandidatesList() {
       education: ["BA in Economics (1st Class) @ Cambridge University (2021)"],
       description:
         "Developed and implemented an effective online pricing strategy for the apparel brand 'Threadbare', resulting in the brand's website transitioning from a loss-making venture to a profitable one.",
+      email: "hhazard2002@gmail.com",
     },
     {
       id: 6,
@@ -74,6 +79,7 @@ function CandidatesList() {
       education: ["BA in Music (1st Class) @ Oxford University"],
       description:
         "Walking 57km from Eastbourne to Brighton for Harry's HAT charity last year!",
+      email: "hhazard2002@gmail.com",
     },
     // more users
   ];
@@ -91,25 +97,34 @@ function CandidatesList() {
     const templateID = "template_n24oymp";
     const userID = "12i-YJ-wSzu1tPQM9";
 
-    const templateParams = {
-      name: formData.name,
-      company: formData.company,
-      email: formData.email,
-      linkedin: formData.linkedin,
-      jobDescription: formData.jobDescription,
-      additionalInfo: formData.additionalInfo,
-      reply_to: formData.email,
-    };
+    savedCandidates.forEach((candidate) => {
+      const templateParams = {
+        candidate_name: candidate.name,
+        name: formData.name,
+        company: formData.company,
+        email: candidate.email,
+        linkedin: formData.linkedin,
+        jobDescription: formData.jobDescription,
+        additionalInfo: formData.additionalInfo,
+        reply_to: formData.email,
+      };
+      console.log(templateParams);
 
-    emailjs.send(serviceID, templateID, templateParams, userID).then(
-      (response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        setCreatingRequest(false);
-      },
-      (error) => {
-        console.log("FAILED...", error);
-      }
-    );
+      emailjs.send(serviceID, templateID, templateParams, userID).then(
+        (response) => {
+          console.log(
+            `SUCCESS! Email sent to ${candidate.name}`,
+            response.status,
+            response.text
+          );
+        },
+        (error) => {
+          console.log(`FAILED to send email to ${candidate.name}`, error);
+        }
+      );
+    });
+
+    setCreatingRequest(false);
   };
 
   // Save candidates to local storage whenever the savedCandidates state changes
