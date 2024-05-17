@@ -9,84 +9,10 @@ import emailjs from "emailjs-com";
 import { useAirtable } from "../data/candidates.js";
 
 function CandidatesList() {
-  const candidates2 = [
-    {
-      id: 1,
-      name: "Alice",
-      image: image4,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£50k",
-      education: [
-        "BA in Philosophy, Politics and Economics @ Oxford University (2021)",
-        "MSc in Sociology (Distinction) @ Oxford University",
-      ],
-      description:
-        "Recipient of the A.H Halsey Prize for outstanding performance in the Sociology Master's degree program.",
-      email: "hhazard2002@gmail.com",
-    },
-    {
-      id: 2,
-      name: "Bob",
-      image: image1,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£30-40k",
-      education: ["BA in Economics (1st Class) @ Cambridge University (2021)"],
-      description:
-        "Developed and implemented an effective online pricing strategy for the apparel brand 'Threadbare', resulting in the brand's website transitioning from a loss-making venture to a profitable one.",
-      email: "hhazard2002@gmail.com",
-    },
-    {
-      id: 3,
-      name: "Charlie",
-      image: image2,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£45-60k",
-      education: ["BA in Music (1st Class) @ Oxford University"],
-      description:
-        "Walking 57km from Eastbourne to Brighton for Harry's HAT charity last year!",
-      email: "hhazard2002@gmail.com",
-    },
-    {
-      id: 4,
-      name: "Alice",
-      image: image4,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£50k",
-      education: [
-        "BA in Philosophy, Politics and Economics @ Oxford University (2021)",
-        "MSc in Sociology (Distinction) @ Oxford University",
-      ],
-      description:
-        "Recipient of the A.H Halsey Prize for outstanding performance in the Sociology Master's degree program.",
-      email: "hhazard2002@gmail.com",
-    },
-    {
-      id: 5,
-      name: "Bob",
-      image: image1,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£30-40k",
-      education: ["BA in Economics (1st Class) @ Cambridge University (2021)"],
-      description:
-        "Developed and implemented an effective online pricing strategy for the apparel brand 'Threadbare', resulting in the brand's website transitioning from a loss-making venture to a profitable one.",
-      email: "hhazard2002@gmail.com",
-    },
-    {
-      id: 6,
-      name: "Charlie",
-      image: image2,
-      roles: ["Founder Associate", "Operations"],
-      salary: "£45-60k",
-      education: ["BA in Music (1st Class) @ Oxford University"],
-      description:
-        "Walking 57km from Eastbourne to Brighton for Harry's HAT charity last year!",
-      email: "hhazard2002@gmail.com",
-    },
-    // more users
-  ];
   const { data: candidates, loading, error } = useAirtable();
   const [creatingRequest, setCreatingRequest] = useState(false);
   const [formData, setFormData] = useState(null);
+  const [showToast, setShowToast] = useState(false);
 
   const [savedCandidates, setSavedCandidates] = useState(() => {
     // Load candidates from local storage or initialize with default candidates
@@ -121,6 +47,10 @@ function CandidatesList() {
           setSavedCandidates((prevCandidates) =>
             prevCandidates.filter((c) => c.id !== candidate.id)
           );
+          setShowToast(true);
+          setTimeout(() => {
+            setShowToast(false);
+          }, 3000); // Hide the toast after 3 seconds
         },
         (error) => {
           console.log(`FAILED to send email to ${candidate.name}`, error);
@@ -156,6 +86,51 @@ function CandidatesList() {
 
   return (
     <div className="flex justify-center pb-20 bg-white">
+      {showToast && (
+        <div
+          id="toast-success"
+          className="fixed top-4 right-4 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+          role="alert"
+        >
+          <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            <span className="sr-only">Check icon</span>
+          </div>
+          <div className="ml-3 text-sm font-normal">
+            Emails sent successfully.
+          </div>
+          <button
+            type="button"
+            className="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+            onClick={() => setShowToast(false)}
+          >
+            <span className="sr-only">Close</span>
+            <svg
+              className="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
       <div className="w-1/5 h-auto rounded-lg bg-white mt-5 pl-2 pr-2 flex flex-col items-start min-h-0 sticky top-0">
         {savedCandidates.length === 0 ? (
           <h2 className="pt-5 text-md lg:text-xl">
