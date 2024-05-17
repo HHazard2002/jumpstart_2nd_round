@@ -17,7 +17,7 @@ export const AirtableProvider = ({ children }) => {
       console.log("yes");
       const baseId = "appabWgUqx5k2dLuN";
       const tableName = "Candidates";
-      const apiKey = process.env.AIRTABLE_API_KEY;
+      const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
       const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
       try {
