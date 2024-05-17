@@ -6,9 +6,10 @@ import image2 from "../images/image2.jpg";
 import SavedCandidates from "../components/saved_candidates";
 import InterviewRequest from "../components/interview_request";
 import emailjs from "emailjs-com";
+import { useAirtable } from "../data/candidates.js";
 
 function CandidatesList() {
-  const candidates = [
+  const candidates2 = [
     {
       id: 1,
       name: "Alice",
@@ -83,6 +84,7 @@ function CandidatesList() {
     },
     // more users
   ];
+  const { data: candidates, loading, error } = useAirtable();
   const [creatingRequest, setCreatingRequest] = useState(false);
   const [formData, setFormData] = useState(null);
 
@@ -108,7 +110,6 @@ function CandidatesList() {
         additionalInfo: formData.additionalInfo,
         reply_to: formData.email,
       };
-      console.log(templateParams);
 
       emailjs.send(serviceID, templateID, templateParams, userID).then(
         (response) => {
@@ -116,6 +117,9 @@ function CandidatesList() {
             `SUCCESS! Email sent to ${candidate.name}`,
             response.status,
             response.text
+          );
+          setSavedCandidates((prevCandidates) =>
+            prevCandidates.filter((c) => c.id !== candidate.id)
           );
         },
         (error) => {
