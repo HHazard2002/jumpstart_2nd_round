@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function SavedCandidates({ savedCandidate, onToggleCandidate }) {
   return (
-    <div className="max-h-[110px] max-w-sm mx-auto mt-2 pt-2 pr-4 pl-2 bg-white rounded-lg  dark:bg-gray-800 dark:border-gray-700 overflow-hidden flex w-full">
+    <div className="max-h-[110px] max-w-sm mx-auto mt-2 pt-2  bg-white rounded-lg  dark:bg-gray-800 dark:border-gray-700 overflow-hidden flex w-full">
       <a href="#">
         <img
           className="w-16 h-16 mb-2 object-cover rounded-lg"
@@ -10,7 +10,7 @@ function SavedCandidates({ savedCandidate, onToggleCandidate }) {
           alt="Descriptive alt text"
         />
       </a>
-      <div className="pt-2 pl-4 flex flex-col flex-grow">
+      <div className="pt-2 pl-2 flex flex-col flex-grow">
         <a href="#">
           <div className="flex items-center">
             <h5 className="text-md font-bold tracking-tight text-gray-900 dark:text-white">
