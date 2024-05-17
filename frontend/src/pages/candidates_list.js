@@ -157,7 +157,11 @@ function CandidatesList() {
   return (
     <div className="flex justify-center pb-20 bg-white">
       <div className="w-1/5 h-auto rounded-lg bg-white mt-5 pl-2 pr-2 flex flex-col items-center min-h-0 sticky top-0">
-        <h2 className="pt-5 text-xl  lg:text-3xl">Candidates to interview</h2>
+      {savedCandidates.length == 0 && (
+          <h2 className="pt-5 text-md lg:text-xl">
+            Select your first candidate to continue!
+          </h2>
+        ) : (<h2 className="pt-5 text-xl lg:text-3xl">Candidates to interview</h2>)}
         {savedCandidates.map((savedCandidate, index) => (
           <SavedCandidates
             key={index}
@@ -165,6 +169,7 @@ function CandidatesList() {
             onToggleCandidate={toggleCandidate}
           />
         ))}
+        
         {savedCandidates.length > 0 && (
           <div className="flex flex-col items-center">
             {creatingRequest ? (
