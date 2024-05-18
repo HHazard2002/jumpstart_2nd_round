@@ -36,7 +36,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
         <div className="mt-2 mb-2">
           <p className="font-bold">
             {(() => {
-              const educationText = candidate.education;
+              const educationText = candidate.education[0];
               console.log("Education Text:", educationText);
               if (educationText.includes("; ")) {
                 const splitText = educationText.split("; ")[1];
