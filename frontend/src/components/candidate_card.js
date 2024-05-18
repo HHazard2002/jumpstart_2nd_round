@@ -77,15 +77,19 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Select for an interview
               </button>
-
               <img
                 src={linkedin}
+                alt={candidate.name}
                 title="Linkedin icons"
                 className="h-8 w-8 mb-4"
-                alt={candidate.name}
-                onClick={() => window.open(candidate.linkedin, "_blank")}
+                onClick={() => {
+                  console.log(
+                    `Opening LinkedIn profile: ${candidate.linkedin}`
+                  );
+                  window.open(candidate.linkedin, "_blank");
+                }}
                 style={{ cursor: "pointer" }}
-              ></img>
+              />
             </div>
           )}
         </div>
