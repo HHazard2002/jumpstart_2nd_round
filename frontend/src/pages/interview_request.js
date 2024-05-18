@@ -100,13 +100,13 @@ function InterviewRequest() {
           setTimeout(() => {
             setShowToast(false);
           }, 5000); // Hide the toast after 5 seconds
+          navigate("/candidates");
         },
         (error) => {
           console.log(`FAILED to send email to ${candidate.name}`, error);
         }
       );
     });
-    navigate("/candidates");
   };
 
   return (
