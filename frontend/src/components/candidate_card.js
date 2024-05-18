@@ -43,8 +43,11 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
           {candidate.description}
         </p>
         <div className="flex items-center ">
-          <a href="https://www.flaticon.com/free-icons/cv" title="CV icons"></a>
-          <a href={linkedin} title="Linkedin icons"></a>
+          <img
+            src="https://www.flaticon.com/free-icons/cv"
+            title="CV icons"
+          ></img>
+          <img src={linkedin} title="Linkedin icons"></img>
         </div>
 
         <div className="mt-auto">
