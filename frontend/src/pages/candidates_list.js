@@ -50,7 +50,7 @@ function CandidatesList() {
           setShowToast(true);
           setTimeout(() => {
             setShowToast(false);
-          }, 3000); // Hide the toast after 3 seconds
+          }, 5000); // Hide the toast after 5 seconds
         },
         (error) => {
           console.log(`FAILED to send email to ${candidate.name}`, error);

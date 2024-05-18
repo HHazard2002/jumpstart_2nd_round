@@ -1,4 +1,5 @@
 import React from "react";
+import linkedin from "../images/linkedin-localStorage.png";
 
 function CandidateCard({ candidate, isInList, onToggleCandidate }) {
   return (
@@ -12,7 +13,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
       </a>
       <div className="pt-2 flex flex-col flex-grow">
         <a href="#">
-          <div className="flex items-cente justify-between">
+          <div className="flex items-center justify-between">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {candidate.name}
             </h5>
@@ -41,6 +42,11 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
         <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-400">
           {candidate.description}
         </p>
+        <div className="flex items-center ">
+          <a href="https://www.flaticon.com/free-icons/cv" title="CV icons"></a>
+          <a href={linkedin} title="Linkedin icons"></a>
+        </div>
+
         <div className="mt-auto">
           {isInList ? (
             <button
