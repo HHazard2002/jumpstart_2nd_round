@@ -82,6 +82,9 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
                 src={linkedin}
                 title="Linkedin icons"
                 className="h-8 w-8 mb-4"
+                alt={candidate.name}
+                onClick={() => window.open(candidate.linkedin, "_blank")}
+                style={{ cursor: "pointer" }}
               ></img>
             </div>
           )}

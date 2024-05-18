@@ -101,7 +101,7 @@ function InterviewRequest() {
     });
 
     Promise.all(emailPromises).then(() => {
-      setSavedCandidates([]);
+      localStorage.setItem("candidates");
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);

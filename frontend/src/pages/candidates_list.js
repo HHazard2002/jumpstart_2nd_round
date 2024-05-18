@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 function CandidatesList() {
   const navigate = useNavigate();
   const { data: candidates, loading, error } = useAirtable();
-  const [creatingRequest, setCreatingRequest] = useState(false);
-  const [formData, setFormData] = useState(null);
   const [showToast, setShowToast] = useState(false);
 
   const [savedCandidates, setSavedCandidates] = useState(() => {
@@ -19,48 +17,6 @@ function CandidatesList() {
     return savedCandidates ? JSON.parse(savedCandidates) : [];
   });
 
-  const sendEmail = (formData) => {
-    const serviceID = "service_il03da8";
-    const templateID = "template_n24oymp";
-    const userID = "12i-YJ-wSzu1tPQM9";
-
-    savedCandidates.forEach((candidate) => {
-      const templateParams = {
-        candidate_name: candidate.name,
-        name: formData.name,
-        company: formData.company,
-        email: candidate.email,
-        linkedin: formData.linkedin,
-        jobDescription: formData.jobDescription,
-        additionalInfo: formData.additionalInfo,
-        reply_to: formData.email,
-      };
-
-      emailjs.send(serviceID, templateID, templateParams, userID).then(
-        (response) => {
-          console.log(
-            `SUCCESS! Email sent to ${candidate.name}`,
-            response.status,
-            response.text
-          );
-          setSavedCandidates((prevCandidates) =>
-            prevCandidates.filter((c) => c.id !== candidate.id)
-          );
-          setShowToast(true);
-          setTimeout(() => {
-            setShowToast(false);
-          }, 5000); // Hide the toast after 5 seconds
-        },
-        (error) => {
-          console.log(`FAILED to send email to ${candidate.name}`, error);
-        }
-      );
-    });
-
-    setCreatingRequest(false);
-  };
-
-  // Save candidates to local storage whenever the savedCandidates state changes
   useEffect(() => {
     localStorage.setItem("candidates", JSON.stringify(savedCandidates));
   }, [savedCandidates]);

@@ -40,6 +40,7 @@ export const AirtableProvider = ({ children }) => {
           description: record.fields["Something they're proud of"],
           email: record.fields["Email address"],
           image: record.fields.Photo ? record.fields.Photo[0].url : null,
+          linkedin: record.fields["LinkedIn"],
         }));
         setData(transformedData);
         console.log(
