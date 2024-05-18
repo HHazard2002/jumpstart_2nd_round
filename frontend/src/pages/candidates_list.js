@@ -127,10 +127,7 @@ function CandidatesList() {
               </button>
               <button
                 onClick={() =>
-                  localStorage.setItem(
-                    "candidates",
-                    JSON.stringify(newCandidates)
-                  )
+                  localStorage.setItem("candidates", JSON.stringify([]))
                 }
                 className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 bg-red-500 transition duration-400"
               >
