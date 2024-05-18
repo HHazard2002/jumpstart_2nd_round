@@ -148,38 +148,21 @@ function CandidatesList() {
 
         {savedCandidates.length > 0 && (
           <div className="flex flex-col items-center">
-            {creatingRequest ? (
-              <div className="flex flex-col items-center mt-5">
-                <button
-                  onClick={() => sendEmail(formData)}
-                  style={{
-                    backgroundColor: "rgb(0, 242, 194)",
-                  }}
-                  className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
-                >
-                  Send match request
-                </button>
-                <span className="text-xs text-gray-500 mt-2">
-                  An email will be sent to the selected candidates!
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center mt-5">
-                {" "}
-                <button
-                  onClick={() => navigate("/interview-request")}
-                  style={{
-                    backgroundColor: "rgb(0, 242, 194)",
-                  }}
-                  className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
-                >
-                  Create match request
-                </button>
-                <span className="text-xs text-gray-500 mt-2">
-                  No emails will be sent yet!
-                </span>
-              </div>
-            )}
+            <div className="flex flex-col items-center mt-5">
+              {" "}
+              <button
+                onClick={() => navigate("/interview-request")}
+                style={{
+                  backgroundColor: "rgb(0, 242, 194)",
+                }}
+                className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
+              >
+                Create match request
+              </button>
+              <span className="text-xs text-gray-500 mt-2">
+                No emails will be sent yet!
+              </span>
+            </div>
           </div>
         )}
       </div>
