@@ -12,16 +12,23 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
           alt="Descriptive alt text"
         />
       </a>
-      <div className="pt-2 flex flex-col flex-grow">
+      <div className="pt-2 flex flex-col flex-grow justify-between">
         <a href="#">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {candidate.name}
             </h5>
-            <h5 className="text-md font- tracking-tight text-gray-900 dark:text-white">
-              {candidate.salary}
-            </h5>
+            <img
+              src="path/to/linkedin/icon.png" // replace with the actual path to your LinkedIn icon
+              alt="LinkedIn"
+              title="LinkedIn"
+              className="h-8 w-8 ml-4 cursor-pointer"
+              onClick={() => window.open(candidate.linkedin, "_blank")}
+            />
           </div>
+          <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
+            {candidate.salary}
+          </h5>
         </a>
         <div className="mt-2">
           {candidate.roles.map((role, index) => (
@@ -83,9 +90,6 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
                 title="Linkedin icons"
                 className="h-8 w-8 mb-4"
                 onClick={() => {
-                  console.log(
-                    `Opening LinkedIn profile: ${candidate.linkedin}`
-                  );
                   window.open(candidate.linkedin, "_blank");
                 }}
                 style={{ cursor: "pointer" }}
