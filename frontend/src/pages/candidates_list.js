@@ -4,10 +4,11 @@ import SavedCandidates from "../components/saved_candidates";
 import InterviewRequest from "../components/interview_request";
 import emailjs from "emailjs-com";
 import { useAirtable } from "../data/candidates.js";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, useLocation } from "react-router-dom"; // Import useNavigate
 
 function CandidatesList() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { data: candidates, loading, error } = useAirtable();
   const [showToast, setShowToast] = useState(false);
 
@@ -20,6 +21,15 @@ function CandidatesList() {
   useEffect(() => {
     localStorage.setItem("candidates", JSON.stringify(savedCandidates));
   }, [savedCandidates]);
+
+  useEffect(() => {
+    if (location.state?.showToast) {
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000); // Hide the toast after 5 seconds
+    }
+  }, [location.state]);
 
   const addCandidate = (candidate) => {
     if (!savedCandidates.some((c) => c.id === candidate.id)) {

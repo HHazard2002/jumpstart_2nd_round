@@ -104,11 +104,7 @@ function InterviewRequest() {
       const newCandidates = [];
       setSavedCandidates(newCandidates);
       localStorage.setItem("candidates", JSON.stringify(newCandidates));
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);
-      }, 5000); // Hide the toast after 5 seconds
-      navigate("/candidates");
+      navigate("/candidates", { state: { showToast: true } });
     });
   };
 
