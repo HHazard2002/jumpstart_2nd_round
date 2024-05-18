@@ -19,11 +19,14 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               {candidate.name}
             </h5>
             <img
-              src="path/to/linkedin/icon.png" // replace with the actual path to your LinkedIn icon
-              alt="LinkedIn"
-              title="LinkedIn"
-              className="h-8 w-8 ml-4 cursor-pointer"
-              onClick={() => window.open(candidate.linkedin, "_blank")}
+              src={linkedin}
+              alt={candidate.name}
+              title="Linkedin icons"
+              className="h-8 w-8 mb-4"
+              onClick={() => {
+                window.open(candidate.linkedin, "_blank");
+              }}
+              style={{ cursor: "pointer" }}
             />
           </div>
           <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -84,16 +87,6 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Select for an interview
               </button>
-              <img
-                src={linkedin}
-                alt={candidate.name}
-                title="Linkedin icons"
-                className="h-8 w-8 mb-4"
-                onClick={() => {
-                  window.open(candidate.linkedin, "_blank");
-                }}
-                style={{ cursor: "pointer" }}
-              />
             </div>
           )}
         </div>
