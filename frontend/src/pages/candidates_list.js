@@ -4,8 +4,10 @@ import SavedCandidates from "../components/saved_candidates";
 import InterviewRequest from "../components/interview_request";
 import emailjs from "emailjs-com";
 import { useAirtable } from "../data/candidates.js";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function CandidatesList() {
+  const navigate = useNavigate();
   const { data: candidates, loading, error } = useAirtable();
   const [creatingRequest, setCreatingRequest] = useState(false);
   const [formData, setFormData] = useState(null);
@@ -165,7 +167,7 @@ function CandidatesList() {
               <div className="flex flex-col items-center mt-5">
                 {" "}
                 <button
-                  onClick={() => setCreatingRequest(true)}
+                  onClick={() => navigate("/interview-request")}
                   style={{
                     backgroundColor: "rgb(0, 242, 194)",
                   }}
@@ -181,23 +183,17 @@ function CandidatesList() {
           </div>
         )}
       </div>
-      {creatingRequest ? (
-        <InterviewRequest
-          setCreatingRequest={setCreatingRequest}
-          setFormData={setFormData}
-        />
-      ) : (
-        <div className="max-w-[1200px] h-auto lg:w-4/5 w-2/3 grid grid-cols-1 ml-5 mr-5 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {candidates.map((candidate, index) => (
-            <CandidateCard
-              key={index}
-              candidate={candidate}
-              isInList={savedCandidates.some((c) => c.id === candidate.id)}
-              onToggleCandidate={toggleCandidate}
-            />
-          ))}
-        </div>
-      )}
+
+      <div className="max-w-[1200px] h-auto lg:w-4/5 w-2/3 grid grid-cols-1 ml-5 mr-5 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {candidates.map((candidate, index) => (
+          <CandidateCard
+            key={index}
+            candidate={candidate}
+            isInList={savedCandidates.some((c) => c.id === candidate.id)}
+            onToggleCandidate={toggleCandidate}
+          />
+        ))}
+      </div>
     </div>
   );
 }
