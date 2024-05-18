@@ -35,9 +35,16 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
         </div>
         <div className="mt-2 mb-2">
           <p className="font-bold">
-            {candidate.education.includes("; ")
-              ? candidate.education.split("; ")[1]
-              : candidate.education}
+            {(() => {
+              const educationText = candidate.education;
+              console.log("Education Text:", educationText);
+              if (educationText.includes("; ")) {
+                const splitText = educationText.split("; ")[1];
+                console.log("After Semicolon:", splitText);
+                return splitText;
+              }
+              return educationText;
+            })()}
           </p>
         </div>
         <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-400">
