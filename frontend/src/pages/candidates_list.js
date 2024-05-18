@@ -43,6 +43,7 @@ function CandidatesList() {
 
   const clear = () => {
     const newCandidates = [];
+    setSavedCandidates([]);
     localStorage.setItem("candidates", JSON.stringify(newCandidates));
   };
 
@@ -118,9 +119,8 @@ function CandidatesList() {
         ))}
 
         {savedCandidates.length > 0 && (
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col items-center mt-5">
-              {" "}
+          <div className="flex flex-col items-center mt-5">
+            <div className="flex items-center space-x-2">
               <button
                 onClick={() => navigate("/interview-request")}
                 style={{
@@ -128,7 +128,7 @@ function CandidatesList() {
                 }}
                 className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
               >
-                Create match request
+                Create request
               </button>
               <button
                 onClick={() => clear()}
@@ -136,10 +136,10 @@ function CandidatesList() {
               >
                 Clear
               </button>
-              <span className="text-xs text-gray-500 mt-2">
-                No emails will be sent yet!
-              </span>
             </div>
+            <span className="text-xs text-gray-500 mt-2">
+              No emails will be sent yet!
+            </span>
           </div>
         )}
       </div>
