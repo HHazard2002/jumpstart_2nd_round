@@ -126,22 +126,24 @@ function InterviewRequest() {
           />
         ))}
 
-        <div className="flex flex-col items-center">
-          <div className="flex flex-col items-center mt-5">
-            <button
-              onClick={(e) => handleSubmit(e)}
-              style={{
-                backgroundColor: "rgb(0, 242, 194)",
-              }}
-              className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
-            >
-              Send match request
-            </button>
-            <span className="text-xs text-gray-500 mt-2">
-              An email will be sent to the selected candidates!
-            </span>
+        {savedCandidates.length > 0 && (
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mt-5">
+              <button
+                onClick={(e) => handleSubmit(e)}
+                style={{
+                  backgroundColor: "rgb(0, 242, 194)",
+                }}
+                className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
+              >
+                Send match request
+              </button>
+              <span className="text-xs text-gray-500 mt-2">
+                An email will be sent to the selected candidates!
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="overflow-x-hidden max-w-[1200px] lg:w-4/5 w-2/3 ml-5 mr-5 p-5">
         <form onSubmit={handleSubmit}>

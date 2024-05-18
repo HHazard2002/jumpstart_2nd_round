@@ -72,11 +72,6 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Remove from the list
               </button>
-              <img
-                src={linkedin}
-                title="Linkedin icons"
-                className="h-8 w-8 mb-4"
-              ></img>
             </div>
           ) : (
             <div className="flex items-center justify-between">
