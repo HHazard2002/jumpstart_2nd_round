@@ -1,5 +1,6 @@
 import React from "react";
 import linkedin from "../images/linkedin-logo.png";
+import cv from "../images/cv.png";
 
 function CandidateCard({ candidate, isInList, onToggleCandidate }) {
   return (
@@ -43,11 +44,12 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
           {candidate.description}
         </p>
         <div className="flex items-center ">
+          <img src={cv} title="CV icons" className="h-10 w-10"></img>
           <img
-            src="https://www.flaticon.com/free-icons/cv"
-            title="CV icons"
+            src={linkedin}
+            title="Linkedin icons"
+            className="h-10 w-10"
           ></img>
-          <img src={linkedin} title="Linkedin icons"></img>
         </div>
 
         <div className="mt-auto">
