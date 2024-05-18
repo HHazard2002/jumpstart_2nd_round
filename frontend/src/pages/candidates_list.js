@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CandidateCard from "../components/candidate_card";
-import image4 from "../images/image4.jpg";
-import image1 from "../images/image1.jpg";
-import image2 from "../images/image2.jpg";
 import SavedCandidates from "../components/saved_candidates";
 import InterviewRequest from "../components/interview_request";
 import emailjs from "emailjs-com";
