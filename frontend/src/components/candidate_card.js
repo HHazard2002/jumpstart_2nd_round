@@ -34,11 +34,9 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
           ))}
         </div>
         <div className="mt-2 mb-2">
-          {candidate.education.slice(-1).map((education, index) => (
-            <p key={index} className="font-bold">
-              {education}
-            </p>
-          ))}
+          <p key={index} className="font-bold">
+            {education.includes("; ") ? education.split("; ")[1] : education}
+          </p>
         </div>
         <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-400">
           {candidate.description}
@@ -53,7 +51,6 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Remove from the list
               </button>
-              <img src={cv} title="CV icons" className="h-8 w-8 mb-4"></img>
               <img
                 src={linkedin}
                 title="Linkedin icons"
@@ -71,7 +68,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Select for an interview
               </button>
-              <img src={cv} title="CV icons" className="h-8 w-8 mb-4"></img>
+
               <img
                 src={linkedin}
                 title="Linkedin icons"
