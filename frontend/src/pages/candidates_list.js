@@ -121,9 +121,20 @@ function CandidatesList() {
                 style={{
                   backgroundColor: "rgb(0, 242, 194)",
                 }}
-                className="px-6 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
+                className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
               >
                 Create match request
+              </button>
+              <button
+                onClick={() =>
+                  localStorage.setItem(
+                    "candidates",
+                    JSON.stringify(newCandidates)
+                  )
+                }
+                className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 bg-red-500 transition duration-400"
+              >
+                Clear
               </button>
               <span className="text-xs text-gray-500 mt-2">
                 No emails will be sent yet!
