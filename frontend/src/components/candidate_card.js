@@ -34,8 +34,10 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
           ))}
         </div>
         <div className="mt-2 mb-2">
-          <p key={index} className="font-bold">
-            {education.includes("; ") ? education.split("; ")[1] : education}
+          <p className="font-bold">
+            {candidate.education.includes("; ")
+              ? candidate.education.split("; ")[1]
+              : candidate.education}
           </p>
         </div>
         <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-400">
