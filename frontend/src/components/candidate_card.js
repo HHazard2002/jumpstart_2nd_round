@@ -1,5 +1,5 @@
 import React from "react";
-import linkedin from "../images/linkedin-localStorage.png";
+import linkedin from "../images/linkedin-logo.png";
 
 function CandidateCard({ candidate, isInList, onToggleCandidate }) {
   return (
