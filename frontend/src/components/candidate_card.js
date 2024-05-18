@@ -53,11 +53,11 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Remove from the list
               </button>
-              <img src={cv} title="CV icons" className="h-10 w-10"></img>
+              <img src={cv} title="CV icons" className="h-8 w-8"></img>
               <img
                 src={linkedin}
                 title="Linkedin icons"
-                className="h-8 w-8"
+                className="h-8 w-8 mb-4"
               ></img>
             </div>
           ) : (
@@ -71,11 +71,11 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Select for an interview
               </button>
-              <img src={cv} title="CV icons" className="h-10 w-10"></img>
+              <img src={cv} title="CV icons" className="h-8 w-8"></img>
               <img
                 src={linkedin}
                 title="Linkedin icons"
-                className="h-8 w-8"
+                className="h-8 w-8 mb-4"
               ></img>
             </div>
           )}
