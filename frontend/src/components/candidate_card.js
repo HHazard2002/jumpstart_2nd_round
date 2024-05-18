@@ -14,24 +14,26 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
       </a>
       <div className="pt-2 flex flex-col flex-grow justify-between">
         <a href="#">
-          <div className="flex items-center">
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {candidate.name}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {candidate.name}
+              </h5>
+              <img
+                src={linkedin}
+                alt={candidate.name}
+                title="Linkedin icon"
+                className="h-8 w-8 ml-2"
+                onClick={() => {
+                  window.open(candidate.linkedin, "_blank");
+                }}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <h5 className="text-md tracking-tight text-gray-900 dark:text-white">
+              {candidate.salary}
             </h5>
-            <img
-              src={linkedin}
-              alt={candidate.name}
-              title="Linkedin icons"
-              className="h-8 w-8 mb-4"
-              onClick={() => {
-                window.open(candidate.linkedin, "_blank");
-              }}
-              style={{ cursor: "pointer" }}
-            />
           </div>
-          <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
-            {candidate.salary}
-          </h5>
         </a>
         <div className="mt-2">
           {candidate.roles.map((role, index) => (
