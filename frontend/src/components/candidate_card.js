@@ -57,7 +57,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               <img
                 src={linkedin}
                 title="Linkedin icons"
-                className="h-10 w-10"
+                className="h-8 w-8"
               ></img>
             </div>
           ) : (
@@ -75,7 +75,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               <img
                 src={linkedin}
                 title="Linkedin icons"
-                className="h-10 w-10"
+                className="h-8 w-8"
               ></img>
             </div>
           )}
