@@ -41,6 +41,11 @@ function CandidatesList() {
     setSavedCandidates(savedCandidates.filter((c) => c.id !== candidate.id));
   };
 
+  const clear = () => {
+    const newCandidates = [];
+    localStorage.setItem("candidates", JSON.stringify(newCandidates));
+  };
+
   const toggleCandidate = (candidate) => {
     if (savedCandidates.some((c) => c.id === candidate.id)) {
       removeCandidate(candidate);
@@ -126,10 +131,8 @@ function CandidatesList() {
                 Create match request
               </button>
               <button
-                onClick={() =>
-                  localStorage.setItem("candidates", JSON.stringify([]))
-                }
-                className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 bg-red-500 transition duration-400"
+                onClick={() => clear()}
+                className="px-2 py-2 text-white rounded-lg font-normal transform hover:-translate-y-1 bg-red-500 transition duration-400"
               >
                 Clear
               </button>
