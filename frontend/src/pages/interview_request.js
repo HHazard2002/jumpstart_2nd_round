@@ -74,7 +74,7 @@ function InterviewRequest() {
     const templateID = "template_n24oymp";
     const userID = "12i-YJ-wSzu1tPQM9";
 
-    savedCandidates.forEach((candidate) => {
+    let emailPromises = savedCandidates.map((candidate) => {
       const templateParams = {
         candidate_name: candidate.name,
         name: formData.name,
@@ -86,26 +86,27 @@ function InterviewRequest() {
         reply_to: formData.email,
       };
 
-      emailjs.send(serviceID, templateID, templateParams, userID).then(
-        (response) => {
+      return emailjs
+        .send(serviceID, templateID, templateParams, userID)
+        .then((response) => {
           console.log(
             `SUCCESS! Email sent to ${candidate.name}`,
             response.status,
             response.text
           );
-          setSavedCandidates((prevCandidates) =>
-            prevCandidates.filter((c) => c.id !== candidate.id)
-          );
-          setShowToast(true);
-          setTimeout(() => {
-            setShowToast(false);
-          }, 5000); // Hide the toast after 5 seconds
-          navigate("/candidates");
-        },
-        (error) => {
+        })
+        .catch((error) => {
           console.log(`FAILED to send email to ${candidate.name}`, error);
-        }
-      );
+        });
+    });
+
+    Promise.all(emailPromises).then(() => {
+      setSavedCandidates([]);
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000); // Hide the toast after 5 seconds
+      navigate("/candidates");
     });
   };
 
