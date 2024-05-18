@@ -43,33 +43,41 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
         <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-400">
           {candidate.description}
         </p>
-        <div className="flex items-center ">
-          <img src={cv} title="CV icons" className="h-10 w-10"></img>
-          <img
-            src={linkedin}
-            title="Linkedin icons"
-            className="h-10 w-10"
-          ></img>
-        </div>
 
         <div className="mt-auto">
           {isInList ? (
-            <button
-              onClick={() => onToggleCandidate(candidate)}
-              className="px-6 py-2 mb-4 bg-red-500 text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
-            >
-              Remove from the list
-            </button>
+            <div className="flex items-center ">
+              <button
+                onClick={() => onToggleCandidate(candidate)}
+                className="px-6 py-2 mb-4 bg-red-500 text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
+              >
+                Remove from the list
+              </button>
+              <img src={cv} title="CV icons" className="h-10 w-10"></img>
+              <img
+                src={linkedin}
+                title="Linkedin icons"
+                className="h-10 w-10"
+              ></img>
+            </div>
           ) : (
-            <button
-              onClick={() => onToggleCandidate(candidate)}
-              className="px-6 py-2 mb-4 bg-black text-black rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
-              style={{
-                backgroundColor: "rgb(0, 242, 194)",
-              }}
-            >
-              Select for an interview
-            </button>
+            <div className="flex items-center ">
+              <button
+                onClick={() => onToggleCandidate(candidate)}
+                className="px-6 py-2 mb-4 bg-black text-black rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
+                style={{
+                  backgroundColor: "rgb(0, 242, 194)",
+                }}
+              >
+                Select for an interview
+              </button>
+              <img src={cv} title="CV icons" className="h-10 w-10"></img>
+              <img
+                src={linkedin}
+                title="Linkedin icons"
+                className="h-10 w-10"
+              ></img>
+            </div>
           )}
         </div>
       </div>
