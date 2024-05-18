@@ -120,7 +120,7 @@ function CandidatesList() {
 
         {savedCandidates.length > 0 && (
           <div className="flex flex-col items-center mt-5">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-start space-x-2">
               <button
                 onClick={() => navigate("/interview-request")}
                 style={{
@@ -128,7 +128,7 @@ function CandidatesList() {
                 }}
                 className="px-2 py-2 text-black rounded-lg font-normal transform hover:-translate-y-1 transition duration-400"
               >
-                Create request
+                Create match request
               </button>
               <button
                 onClick={() => clear()}
