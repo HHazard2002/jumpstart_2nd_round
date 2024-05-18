@@ -46,14 +46,14 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
 
         <div className="mt-auto">
           {isInList ? (
-            <div className="flex items-center ">
+            <div className="flex items-center justify-between">
               <button
                 onClick={() => onToggleCandidate(candidate)}
                 className="px-6 py-2 mb-4 bg-red-500 text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
               >
                 Remove from the list
               </button>
-              <img src={cv} title="CV icons" className="h-8 w-8"></img>
+              <img src={cv} title="CV icons" className="h-8 w-8 mb-4"></img>
               <img
                 src={linkedin}
                 title="Linkedin icons"
@@ -61,7 +61,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               ></img>
             </div>
           ) : (
-            <div className="flex items-center ">
+            <div className="flex items-center justify-between">
               <button
                 onClick={() => onToggleCandidate(candidate)}
                 className="px-6 py-2 mb-4 bg-black text-black rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
@@ -71,7 +71,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
               >
                 Select for an interview
               </button>
-              <img src={cv} title="CV icons" className="h-8 w-8"></img>
+              <img src={cv} title="CV icons" className="h-8 w-8 mb-4"></img>
               <img
                 src={linkedin}
                 title="Linkedin icons"
