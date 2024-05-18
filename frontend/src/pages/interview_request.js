@@ -106,6 +106,7 @@ function InterviewRequest() {
         }
       );
     });
+    navigate("/candidates");
   };
 
   return (
