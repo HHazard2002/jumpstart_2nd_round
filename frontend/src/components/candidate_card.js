@@ -23,7 +23,7 @@ function CandidateCard({ candidate, isInList, onToggleCandidate }) {
                 src={linkedin}
                 alt={candidate.name}
                 title="Linkedin icon"
-                className="h-6 w-6 ml-2"
+                className="h-5 w-5 ml-2"
                 onClick={() => {
                   window.open(candidate.linkedin, "_blank");
                 }}
