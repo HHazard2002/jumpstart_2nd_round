@@ -86,6 +86,8 @@ function InterviewRequest() {
         reply_to: formData.email,
       };
 
+      console.log(templateParams);
+
       return emailjs
         .send(serviceID, templateID, templateParams, userID)
         .then((response) => {
